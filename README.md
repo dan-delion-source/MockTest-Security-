@@ -33,4 +33,8 @@ python3 scripts/import_questions.py '/path/to/source.pdf'
 
 Import requires `pdftotext` (Poppler). The importer validates complete questions and sequential IDs. Browser verification lives in `tests/browser-check.mjs`. With the server running, use `npm install`, `npx playwright install chromium`, then `npm run test:browser`. Screenshots are written to `artifacts/`.
 
-For static hosting, publish `index.html`, `src/`, and `public/` at the site root. `server.mjs` is a local development server.
+## Deploy on Vercel
+
+Import this repository with the root directory set to the repository root. `vercel.json` selects the static build and publishes `dist/`, which contains `index.html`, `src/`, and `public/` at the site root. No environment variables are needed. The build runs automatically on deployment; run `npm run build` locally to inspect the output. `server.mjs` is a local development server.
+
+After deployment, open the deployment URL and verify that the question sets load. If Vercel still shows a 404, check that the project's Root Directory points to this repository root and that the latest commit containing `vercel.json` was deployed.
